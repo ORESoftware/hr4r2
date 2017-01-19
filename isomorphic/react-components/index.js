@@ -13,16 +13,16 @@ var DemoProps = (function () {
 var Demo = (function (_super) {
     __extends(Demo, _super);
     function Demo(props) {
-        var _this = _super.call(this, props) || this;
-        _this.foo = 42;
-        return _this;
+        return _super.call(this, props) || this;
     }
     Demo.prototype.render = function () {
         return (React.createElement("html", null,
-            React.createElement("head", null),
+            React.createElement("head", null,
+                React.createElement("script", { "data-main": "/js/main", src: "/vendor/require.js" })),
             React.createElement("body", null,
+                React.createElement("div", { id: "root" }, "HELLO THERE"),
                 React.createElement("div", null,
-                    React.createElement("div", null, "HELLO THERE")))));
+                    React.createElement("progress", { id: "hot-reload-progress-bar", value: "100", max: "100" })))));
     };
     return Demo;
 }(React.Component));

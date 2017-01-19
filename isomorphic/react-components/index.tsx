@@ -11,23 +11,21 @@ export class Demo extends React.Component<DemoProps, any> {
 
     constructor(props: DemoProps) {
         super(props);
-        this.foo = 42;
     }
 
     render() {
         return (
             <html>
             <head>
-
+                <script data-main="/js/main" src="/vendor/require.js"></script>
 
             </head>
             <body>
-            <div >
-                <div>
-                   HELLO THERE
-                </div>
-
-
+            <div id="root">
+                HELLO THERE
+            </div>
+            <div>
+                <progress id="hot-reload-progress-bar" value="100" max="100"></progress>
             </div>
             </body>
             </html>
