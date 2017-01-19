@@ -29,6 +29,7 @@ requirejs.config({
         'react': '//cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react-with-addons',
         // 'socketio': '//cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.2/socket.io',
         'socketio': '//cdnjs.cloudflare.com/ajax/libs/socket.io/1.4.5/socket.io',
+        '@hot-reload-handler': 'js/hot-reload-handler',
         '@hot-reloader': 'js/hot-reload-handler',
 
         'jquery': '//cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery',

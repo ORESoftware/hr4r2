@@ -1,7 +1,7 @@
 /* globals console define require React async */
 
 import router = require('js/router');
-import hotReloader = require('@hot-reloader');
+import hotReloader = require('@hot-reload-handler');
 
 
 function start() {

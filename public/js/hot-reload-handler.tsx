@@ -113,7 +113,7 @@ function getConnection() {
         });
 
 
-        socketHotReload.on('HOT_RELOAD_JSX', function (data)
+        socketHotReload.on('HOT_RELOAD_JSX', function (data){
 
             console.log('hot reload => ready');
 
