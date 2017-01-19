@@ -7,9 +7,11 @@
 //TODO: http://jmfurlott.com/tutorial-setting-up-a-single-page-react-web-app-with-react-router-and-webpack/
 
 
+const globalRequire = window.require;
+
 const hotReloadSimple = function (item, cb) {
-    require.undef(item);
-    require([item], function (file) {
+    globalRequire.undef(item);
+    globalRequire([item], function (file) {
         cb(null, file);
     });
 };

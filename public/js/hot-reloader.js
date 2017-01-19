@@ -1,8 +1,9 @@
 define(["require", "exports"], function (require, exports) {
     "use strict";
+    var globalRequire = window.require;
     var hotReloadSimple = function (item, cb) {
-        require.undef(item);
-        require([item], function (file) {
+        globalRequire.undef(item);
+        globalRequire([item], function (file) {
             cb(null, file);
         });
     };

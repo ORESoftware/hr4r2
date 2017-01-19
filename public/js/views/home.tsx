@@ -11,7 +11,7 @@ export = class Home extends React.Component<any, any> {
         return (
 
             <div>
-                We are home!!!
+                We are home sucksa!xxxx!!
             </div>
 
         )

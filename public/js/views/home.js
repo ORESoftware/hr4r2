@@ -11,7 +11,7 @@ define(["require", "exports", "react"], function (require, exports, React) {
             return _super.call(this, props) || this;
         }
         Home.prototype.render = function () {
-            return (React.createElement("div", null, "We are home!!!"));
+            return (React.createElement("div", null, "We are home sucksa!xxxx!!"));
         };
         return Home;
     }(React.Component));

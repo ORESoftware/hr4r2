@@ -1,3 +1,4 @@
+/* globals define async require */
 var __assign = (this && this.__assign) || Object.assign || function(t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
         s = arguments[i];
@@ -18,6 +19,7 @@ define(["require", "exports", "react"], function (require, exports, React) {
     }
     function getPage(routes, cb) {
         require(routes, function (view) {
+            // pass back all static assets that were fetched, first asset is always view
             cb.apply(null, [view]);
         }, function (err) {
             console.error(err.stack || err);
@@ -42,6 +44,7 @@ define(["require", "exports", "react"], function (require, exports, React) {
     function init() {
         window.onhashchange = function () {
             console.log(' => location => ', location.hash, location.href, location);
+            // remove # hash (first char)
             var href = String(window.location.hash).slice(1);
             if (typeof routes[href] !== 'function') {
                 console.log('routes location not found...');

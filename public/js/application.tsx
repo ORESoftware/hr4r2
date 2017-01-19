@@ -10,7 +10,8 @@ function start() {
 
     if (true) {
         hotReloader.getConnection()
-            .once('connected', function () {
+            .once('connect', function () {
+                console.log('we have connected now initting router...');
                 router.init();
                 window.location.hash = 'home';
             });

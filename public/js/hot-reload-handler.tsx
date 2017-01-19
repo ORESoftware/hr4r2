@@ -64,32 +64,32 @@ function deCapitalizeFirstLetter(string) {
 }
 
 
-let socketHotReload = null;
+let socket = null;
 
 function getConnection() {
 
-    if (socketHotReload == null) {
+    if (socket == null) {
         console.log('document.cookie before socketio:', document.cookie);
 
 
-        socketHotReload = io.connect('http://127.0.0.1:3980');
+        socket = io.connect('http://127.0.0.1:3980');
 
 
-        socketHotReload.on('error', function socketConnectionErrorCallback(err) {
+        socket.on('error', function socketConnectionErrorCallback(err) {
             console.error('Unable to connect Socket.IO ---->', JSON.stringify(err));
         });
 
 
-        socketHotReload.on('connect', function (event) {
+        socket.on('connect', function (event) {
             console.info('successfully established a working and authorized connection'.toUpperCase());
         });
 
 
-        socketHotReload.on('disconnect', function (event) {
+        socket.on('disconnect', function (event) {
             console.info('socket disconnected'.toUpperCase());
         });
 
-        socketHotReload.on('.jsx transform error', function (data) {
+        socket.on('.jsx transform error', function (data) {
             window.throwGlobalError(new Error(data));
         });
 
@@ -106,41 +106,70 @@ function getConnection() {
             $("#hot-reload-progress-bar").prop('value', value);
         }
 
-        socketHotReload.on('start-progress-bar', function (data) {
+        socket.on('start-progress-bar', function (data) {
             startProgressBar();
             $("#hot-reload-progress-bar").css('background-color', '#f3f3f3');
             updateProgressBar(20);
         });
 
 
-        socketHotReload.on('HOT_RELOAD_JSX', function (data){
+        // socket.on('HOT_RELOAD_JSX', function (data){
+        //
+        //     console.log('hot reload => ready', data.path);
+        //
+        //     updateProgressBar(40);
+        //
+        //     hotReloader.hotReload(data.path, function (err, result) {
+        //
+        //         if (err) {
+        //             alert(err);
+        //             return;
+        //         }
+        //
+        //         updateProgressBar(60);
+        //
+        //         var filename = deCapitalizeFirstLetter(reconcilePath1(data, 'jsx'));
+        //
+        //         require(['#allViews'], function (allViews) {
+        //             allViews[filename] = result;
+        //             updateProgressBar(80);
+        //             Backbone.history.loadUrl(Backbone.history.fragment);
+        //             updateProgressBar(100);
+        //         });
+        //     });
+        // });
 
-            console.log('hot reload => ready');
+
+
+        socket.on('HOT_RELOAD_JSX', function (data){
+
+            // document.getElementById('progress-bar-unactive-style').disabled = true;
+            // document.getElementById('progress-bar-active-style').disabled = false;
 
             updateProgressBar(40);
 
-            hotReloader.hotReload(data, function (err, result) {
+            hotReloader.hotReload(data.path, function (err, result) {
 
                 if (err) {
                     alert(err);
-                    return;
                 }
-
-                updateProgressBar(60);
-
-                var filename = deCapitalizeFirstLetter(reconcilePath1(data, 'jsx'));
-
-                require(['#allViews'], function (allViews) {
-                    allViews[filename] = result;
-                    updateProgressBar(80);
-                    Backbone.history.loadUrl(Backbone.history.fragment);
-                    updateProgressBar(100);
-                });
+                else {
+                    updateProgressBar(60);
+                    setTimeout(function () {
+                        updateProgressBar(80);
+                        console.log('about to reload backbone history loadurl');
+                        Backbone.history.loadUrl(Backbone.history.fragment);
+                        updateProgressBar(100);
+                        // document.getElementById('progress-bar-unactive-style').disabled = false;
+                        // document.getElementById('progress-bar-active-style').disabled = true;
+                    }, 100);
+                }
             });
         });
 
 
-        socketHotReload.on('hot-reload (.css)', function (data) {
+
+        socket.on('hot-reload (.css)', function (data) {
 
             updateProgressBar(40);
 
@@ -165,7 +194,7 @@ function getConnection() {
         });
     }
 
-    return socketHotReload;
+    return socket;
 }
 
 

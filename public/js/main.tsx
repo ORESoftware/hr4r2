@@ -30,7 +30,7 @@ requirejs.config({
         // 'socketio': '//cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.2/socket.io',
         'socketio': '//cdnjs.cloudflare.com/ajax/libs/socket.io/1.4.5/socket.io',
         '@hot-reload-handler': 'js/hot-reload-handler',
-        '@hot-reloader': 'js/hot-reload-handler',
+        '@hot-reloader': 'js/hot-reloader',
 
         'jquery': '//cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery',
         'underscore': '//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min',
@@ -50,6 +50,10 @@ requirejs.config({
 
 });
 
+document.addEventListener("DOMContentLoaded", function(event) {
+    console.log('dom is ready');
+    window.domIsReady = true;
+});
 
 const deps = [
     'react-dom',
@@ -62,9 +66,19 @@ const deps = [
 require(deps, function () {
 
     require(['js/application'], function (Application) {
+
+        try{
+            // if we reload this file, this will error out
+            Backbone.history.start();
+        }
+        catch(err){
+
+        }
+
         Application.start();
 
     });
+
 });
 
 

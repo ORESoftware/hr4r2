@@ -1,13 +1,19 @@
 'use strict';
 
+const strict = process.argv.indexOf('--strict') > 0;
 
 const chokidar = require('chokidar');
+
+const path = require('path');
 const fs = require('fs');
 const cp = require('child_process');
 
 const Server = require('socket.io');
 const io = new Server(3980, {});
 
+
+const publicPath = path.resolve(__dirname + '/public');
+const publicPathLen = publicPath.length;
 
 const clients = [];
 
@@ -35,9 +41,10 @@ io.on('connection', function (socket) {
 const strm = fs.createWriteStream(__dirname + '/dev-server.log');
 
 
-const watcher = chokidar.watch(__dirname, {
+const watcher = chokidar.watch(__dirname + '/**/*.tsx', {
     // ignored: /\.[^tsx]$/,
-    ignored: ['**/.git/**/*','**/**.js','**/.idea/**/*'],
+    // ignored: '!**/*.tsx',
+    // ignored: ['**/.git/**/*', '**/**.js', '**/.idea/**/*'],
     ignoreInitial: true
 });
 
@@ -53,7 +60,7 @@ function runTSC(path, cb) {
 
         shell.unref();
 
-        if (code < 1) {
+        if (code < 1 || !strict) {
             cb(null)
         }
         else {
@@ -77,13 +84,14 @@ function runTSC(path, cb) {
 
 }
 
+
 let callable = true;
 
 startWatching();
 
-function startWatching(){
+function startWatching() {
 
-    if(!callable){
+    if (!callable) {
         return;
     }
 
@@ -96,7 +104,7 @@ function startWatching(){
             const sockets = clients;
 
             sockets.forEach(function (socket) {
-                socket.send({
+                socket.emit('HOT_RELOAD_JSX', {
                     event: 'add',
                     path: path
                 });
@@ -106,16 +114,24 @@ function startWatching(){
 
         .on('change', path => {
 
-            runTSC(path, function(){
+            runTSC(path, function () {
 
-                const sockets = clients;
+                if (String(path).startsWith(publicPath)) {
 
-                sockets.forEach(function (socket) {
-                    socket.send('HOT_RELOAD_JSX', JSON.stringify({
-                        event: 'change',
-                        path: path
-                    }));
-                });
+                    path = String(path).slice(publicPathLen, path.length - 4) + '.js';
+                    const sockets = clients;
+
+                    console.log('alrighty then sending message to front-end...');
+
+                    sockets.forEach(function (socket) {
+                        socket.emit('HOT_RELOAD_JSX', {
+                            event: 'change',
+                            path: path
+                        });
+                    });
+
+                }
+
             });
 
         })
@@ -125,7 +141,7 @@ function startWatching(){
             const sockets = clients;
 
             sockets.forEach(function (socket) {
-                socket.send({
+                socket.send('HOT_RELOAD_JSX', {
                     event: 'unlink',
                     path: path
                 });
