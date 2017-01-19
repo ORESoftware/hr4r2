@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "types": ["lodash","react","react-dom"],
+    "types": ["node","lodash","react","react-dom"],
     "typeRoots": [ "node_modules/@types"],
     "compileOnSave": true,
     "target": "es5",

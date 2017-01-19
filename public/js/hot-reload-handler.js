@@ -1,4 +1,3 @@
-/* globals console define require React Error async */
 define(["require", "exports", "socketio", "@hot-reloader", "backbone", "jquery"], function (require, exports, io, hotReloader, Backbone, $) {
     "use strict";
     function replaceAll(str, target, replacement) {
@@ -73,34 +72,7 @@ define(["require", "exports", "socketio", "@hot-reloader", "backbone", "jquery"]
                 $("#hot-reload-progress-bar").css('background-color', '#f3f3f3');
                 updateProgressBar(20);
             });
-            // socket.on('HOT_RELOAD_JSX', function (data){
-            //
-            //     console.log('hot reload => ready', data.path);
-            //
-            //     updateProgressBar(40);
-            //
-            //     hotReloader.hotReload(data.path, function (err, result) {
-            //
-            //         if (err) {
-            //             alert(err);
-            //             return;
-            //         }
-            //
-            //         updateProgressBar(60);
-            //
-            //         var filename = deCapitalizeFirstLetter(reconcilePath1(data, 'jsx'));
-            //
-            //         require(['#allViews'], function (allViews) {
-            //             allViews[filename] = result;
-            //             updateProgressBar(80);
-            //             Backbone.history.loadUrl(Backbone.history.fragment);
-            //             updateProgressBar(100);
-            //         });
-            //     });
-            // });
             socket.on('HOT_RELOAD_JSX', function (data) {
-                // document.getElementById('progress-bar-unactive-style').disabled = true;
-                // document.getElementById('progress-bar-active-style').disabled = false;
                 updateProgressBar(40);
                 hotReloader.hotReload(data.path, function (err, result) {
                     if (err) {
@@ -113,8 +85,6 @@ define(["require", "exports", "socketio", "@hot-reloader", "backbone", "jquery"]
                             console.log('about to reload backbone history loadurl');
                             Backbone.history.loadUrl(Backbone.history.fragment);
                             updateProgressBar(100);
-                            // document.getElementById('progress-bar-unactive-style').disabled = false;
-                            // document.getElementById('progress-bar-active-style').disabled = true;
                         }, 100);
                     }
                 });

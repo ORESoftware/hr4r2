@@ -7,23 +7,20 @@
   },
   "main": "bin/www.js",
   "dependencies": {
-    "@types/react": "^15.0.0",
-    "@types/react-dom": "^0.14.20",
     "body-parser": "~1.15.2",
-    "chokidar": "^1.6.1",
     "cookie-parser": "~1.4.3",
     "debug": "~2.2.0",
     "express": "^4.14.0",
-    "jade": "~1.11.0",
     "morgan": "~1.7.0",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
-    "react-router": "^3.0.2",
-    "requirejs": "^2.3.2",
-    "serve-favicon": "~2.3.0",
-    "socket.io": "^1.7.2"
+    "serve-favicon": "~2.3.0"
   },
   "devDependencies": {
+    "socket.io": "^1.7.2",
+    "requirejs": "^2.3.2",
+    "@types/react": "^15.0.0",
+    "@types/react-dom": "^0.14.20",
     "@types/core-js": "^0.9.35",
     "@types/lodash": "^4.14.50",
     "@types/node": "^7.0.0"
