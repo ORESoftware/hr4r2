@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "types": ["node","lodash","react","react-dom"],
+    "typeRoots": [ "node_modules/@types"],
+    "compileOnSave": true,
+    "target": "es5",
+    "module": "commonjs",
+    "noImplicitAny": false,
+    "removeComments": true,
+    "preserveConstEnums": true,
+    "allowJs": true,
+    "allowUnreachableCode": true,
+    "lib": ["es2015", "dom"]
+  },
+  "include": [
+    "./**/*.ts",
+    "./**/*.tsx"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
