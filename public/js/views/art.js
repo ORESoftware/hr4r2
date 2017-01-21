@@ -5,24 +5,6 @@ var __extends = (this && this.__extends) || function (d, b) {
 };
 define(["require", "exports", "react", "js/data-stores/redux-store"], function (require, exports, React, store) {
     "use strict";
-    var asyncSayActionCreator = function (message) {
-        return function (dispatch) {
-            setTimeout(function () {
-                console.log('dispatching...');
-                dispatch({
-                    type: 'SAY',
-                    message: message
-                });
-            }, 2000);
-        };
-    };
-    var sayActionCreator = function (message) {
-        return {
-            type: 'SAY',
-            message: message
-        };
-    };
-    var i = 0;
     return (function (_super) {
         __extends(Home, _super);
         function Home(props) {
@@ -31,19 +13,15 @@ define(["require", "exports", "react", "js/data-stores/redux-store"], function (
         Home.prototype.componentDidMount = function () {
             var s = store.getState();
             this.unsubscribe = store.subscribe(function () {
-                console.log('home is subscribed => ' + i++);
+                console.log('home is subscribed.');
             });
-            setTimeout(function () {
-                console.log('aidentttt');
-                store.dispatch(sayActionCreator('a'));
-            }, 1000);
         };
         Home.prototype.componentWillUnmount = function () {
             console.log('component will unsubscribe');
             this.unsubscribe();
         };
         Home.prototype.render = function () {
-            return (React.createElement("div", null, "Wekkkpp zoom BBBB"));
+            return (React.createElement("div", null, "Wekkkpp zoom peaches"));
         };
         return Home;
     }(React.Component));

@@ -1,3 +1,4 @@
+/* globals console define require React async */
 define(["require", "exports", "js/router", "@hot-reload-handler"], function (require, exports, router, hotReloader) {
     "use strict";
     function start() {
