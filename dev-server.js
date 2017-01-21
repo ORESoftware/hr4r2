@@ -79,7 +79,7 @@ function runTSC(path, cb) {
 
     shell.stdout.pipe(process.stdout);
 
-    shell.stdin.write('tsc --jsx react --module amd --target es5 ' + path + '\n');
+    shell.stdin.write('tsc --skipLibCheck --noResolve --jsx react --module amd --target es5 ' + path + '\n');
     shell.stdin.end();
 
 }
@@ -118,7 +118,7 @@ function startWatching() {
 
                 if (String(path).startsWith(publicPath)) {
 
-                    path = String(path).slice(publicPathLen, path.length - 4) + '.js';
+                    path = String(path).slice(publicPathLen + 1, path.length - 4);
                     const sockets = clients;
 
                     console.log('alrighty then sending message to front-end...');

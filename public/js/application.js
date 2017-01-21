@@ -8,6 +8,8 @@ define(["require", "exports", "js/router", "@hot-reload-handler"], function (req
                 console.log('we have connected now initting router...');
                 router.init();
                 window.location.hash = 'home';
+                var event = new Event('hashchange');
+                window.dispatchEvent(event);
             });
         }
     }

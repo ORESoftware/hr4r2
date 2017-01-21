@@ -3,11 +3,8 @@
 
 import * as React from 'react';
 const ReactDOM = require('react-dom');
-
-
-if (!("onhashchange" in window)) {
-    alert("The browser does *not* support the hashchange event!");
-}
+const async = require('async');
+import store = require('js/data-stores/redux-store');
 
 
 function changeRoute(fns) {
@@ -17,6 +14,7 @@ function changeRoute(fns) {
     });
 
 }
+
 
 function getPage(routes: string[], cb: Function) {
 
@@ -34,13 +32,15 @@ function getPage(routes: string[], cb: Function) {
 }
 
 
+
 function handleRoute(props) {
 
     return function (View) {
 
-        console.log(' rendering view after requiring file...');
         ReactDOM.render(<View  {...props}/>, document.getElementById('root'), function (err, res) {
-            console.log('motorboat: ',err, res);
+            if(err){
+                console.error(err.stack || err);
+            }
         });
 
     }
@@ -50,34 +50,41 @@ function handleRoute(props) {
 
 function home() {
 
-    console.log('we are home now...');
     getPage(['js/views/home'], handleRoute({}));
 }
 
 
+function art() {
+
+    getPage(['js/views/art'], handleRoute({}));
+}
+
+
 const routes = {
-    home: home,
+    '#home': home,
+    '#art': art
 
 };
 
 
+function onHashChange() {
+    console.log(' => hash change => location => ', location.hash, location.href, location);
+
+    const href = window.location.hash;
+
+    if (typeof  routes[href] !== 'function') {
+        console.log('routes location not found...');
+    }
+    else {
+        routes[href].apply(null);
+    }
+}
+
+
 export function init() {
 
-    window.onhashchange = function () {
+    window.addEventListener('hashchange', onHashChange, false);
 
-        console.log(' => location => ', location.hash, location.href, location);
-
-        // remove # hash (first char)
-        const href = String(window.location.hash).slice(1);
-
-        if (typeof  routes[href] !== 'function') {
-            console.log('routes location not found...');
-        }
-        else {
-            routes[href].apply(null);
-        }
-
-    };
 
 }
 

@@ -14,6 +14,8 @@ function start() {
                 console.log('we have connected now initting router...');
                 router.init();
                 window.location.hash = 'home';
+                const event = new Event('hashchange');
+                window.dispatchEvent(event);
             });
     }
 

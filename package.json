@@ -7,22 +7,32 @@
   },
   "main": "bin/www.js",
   "dependencies": {
+    "async": "^2.1.4",
     "body-parser": "~1.15.2",
     "cookie-parser": "~1.4.3",
     "debug": "~2.2.0",
     "express": "^4.14.0",
+    "lodash": "^4.17.4",
     "morgan": "~1.7.0",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "serve-favicon": "~2.3.0"
   },
   "devDependencies": {
-    "socket.io": "^1.7.2",
-    "requirejs": "^2.3.2",
-    "@types/react": "^15.0.0",
-    "@types/react-dom": "^0.14.20",
+    "@types/async": "^2.0.38",
     "@types/core-js": "^0.9.35",
     "@types/lodash": "^4.14.50",
-    "@types/node": "^7.0.0"
+    "@types/node": "^7.0.0",
+    "@types/react": "^15.0.0",
+    "@types/react-dom": "^0.14.20",
+    "@types/react-redux": "^4.4.35",
+    "@types/redux": "^3.6.0",
+    "@types/requirejs": "^2.1.28",
+    "@types/socket.io": "^1.4.27",
+    "@types/socket.io-client": "^1.4.29",
+    "chokidar": "^1.6.1",
+    "requirejs": "^2.3.2",
+    "rimraf": "^2.5.4",
+    "socket.io": "^1.7.2"
   }
 }

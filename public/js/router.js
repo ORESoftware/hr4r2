@@ -9,9 +9,7 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
 define(["require", "exports", "react"], function (require, exports, React) {
     "use strict";
     var ReactDOM = require('react-dom');
-    if (!("onhashchange" in window)) {
-        alert("The browser does *not* support the hashchange event!");
-    }
+    var async = require('async');
     function changeRoute(fns) {
         async.parallel(fns, function (err) {
         });
@@ -26,30 +24,35 @@ define(["require", "exports", "react"], function (require, exports, React) {
     }
     function handleRoute(props) {
         return function (View) {
-            console.log(' rendering view after requiring file...');
             ReactDOM.render(React.createElement(View, __assign({}, props)), document.getElementById('root'), function (err, res) {
-                console.log('motorboat: ', err, res);
+                if (err) {
+                    console.error(err.stack || err);
+                }
             });
         };
     }
     function home() {
-        console.log('we are home now...');
         getPage(['js/views/home'], handleRoute({}));
     }
+    function art() {
+        getPage(['js/views/art'], handleRoute({}));
+    }
     var routes = {
-        home: home,
+        '#home': home,
+        '#art': art
     };
+    function onHashChange() {
+        console.log(' => hash change => location => ', location.hash, location.href, location);
+        var href = window.location.hash;
+        if (typeof routes[href] !== 'function') {
+            console.log('routes location not found...');
+        }
+        else {
+            routes[href].apply(null);
+        }
+    }
     function init() {
-        window.onhashchange = function () {
-            console.log(' => location => ', location.hash, location.href, location);
-            var href = String(window.location.hash).slice(1);
-            if (typeof routes[href] !== 'function') {
-                console.log('routes location not found...');
-            }
-            else {
-                routes[href].apply(null);
-            }
-        };
+        window.addEventListener('hashchange', onHashChange, false);
     }
     exports.init = init;
 });

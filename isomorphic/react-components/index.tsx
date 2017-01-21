@@ -18,6 +18,11 @@ export class Demo extends React.Component<DemoProps, any> {
             <html>
             <head>
                 <script data-main="/js/main" src="/vendor/require.js"></script>
+                <script>
+                    define('@AdminUIConfig', [], function () {
+                    return new Object(<%- data %>);
+                });
+                </script>
 
             </head>
             <body>

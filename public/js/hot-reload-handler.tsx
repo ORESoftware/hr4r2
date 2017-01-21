@@ -1,11 +1,7 @@
-/* globals console define require React Error async */
 
 
-import io = require('socketio');
-import hotReloader = require( '@hot-reloader');
-import hotReloader = require( 'js/css-adder');
-import Backbone = require('backbone');
-import $ = require('jquery');
+const io = require('socket.io');
+import hotReloader = require('@hot-reloader');
 
 
 function replaceAll(str, target, replacement) {
@@ -95,20 +91,20 @@ function getConnection() {
 
 
         function startProgressBar() {
-            $("#hot-reload-progress-bar").show();
+            // $("#hot-reload-progress-bar").show();
         }
 
         function stopProgressBar() {
-            $("#hot-reload-progress-bar").hide();
+            // $("#hot-reload-progress-bar").hide();
         }
 
         function updateProgressBar(value) {
-            $("#hot-reload-progress-bar").prop('value', value);
+            // $("#hot-reload-progress-bar").prop('value', value);
         }
 
         socket.on('start-progress-bar', function (data) {
             startProgressBar();
-            $("#hot-reload-progress-bar").css('background-color', '#f3f3f3');
+            // $("#hot-reload-progress-bar").css('background-color', '#f3f3f3');
             updateProgressBar(20);
         });
 
@@ -140,12 +136,12 @@ function getConnection() {
         // });
 
 
-
-        socket.on('HOT_RELOAD_JSX', function (data){
+        socket.on('HOT_RELOAD_JSX', function (data) {
 
             // document.getElementById('progress-bar-unactive-style').disabled = true;
             // document.getElementById('progress-bar-active-style').disabled = false;
 
+            console.log('data => ', data);
             updateProgressBar(40);
 
             hotReloader.hotReload(data.path, function (err, result) {
@@ -157,8 +153,10 @@ function getConnection() {
                     updateProgressBar(60);
                     setTimeout(function () {
                         updateProgressBar(80);
-                        console.log('about to reload backbone history loadurl');
-                        Backbone.history.loadUrl(Backbone.history.fragment);
+                        // const href = String(window.location.hash).slice(1);
+                        // window.location.hash = 'home';
+                        window.dispatchEvent(new Event('hashchange'));
+                        // Backbone.history.loadUrl(Backbone.history.fragment);
                         updateProgressBar(100);
                         // document.getElementById('progress-bar-unactive-style').disabled = false;
                         // document.getElementById('progress-bar-active-style').disabled = true;
@@ -166,7 +164,6 @@ function getConnection() {
                 }
             });
         });
-
 
 
         socket.on('hot-reload (.css)', function (data) {
@@ -187,7 +184,7 @@ function getConnection() {
                 require(['#allCSS'], function (allCSS) {
                     allCSS[filename] = result;
                     updateProgressBar(80);
-                    Backbone.history.loadUrl(Backbone.history.fragment);
+                    // Backbone.history.loadUrl(Backbone.history.fragment);
                     updateProgressBar(100);
                 });
             });
@@ -196,7 +193,6 @@ function getConnection() {
 
     return socket;
 }
-
 
 
 export = {

@@ -1,5 +1,6 @@
-define(["require", "exports", "socketio", "@hot-reloader", "backbone", "jquery"], function (require, exports, io, hotReloader, Backbone, $) {
+define(["require", "exports", "@hot-reloader"], function (require, exports, hotReloader) {
     "use strict";
+    var io = require('socket.io');
     function replaceAll(str, target, replacement) {
         return str.split(target).join(replacement);
     }
@@ -59,20 +60,17 @@ define(["require", "exports", "socketio", "@hot-reloader", "backbone", "jquery"]
                 window.throwGlobalError(new Error(data));
             });
             function startProgressBar() {
-                $("#hot-reload-progress-bar").show();
             }
             function stopProgressBar() {
-                $("#hot-reload-progress-bar").hide();
             }
             function updateProgressBar(value) {
-                $("#hot-reload-progress-bar").prop('value', value);
             }
             socket.on('start-progress-bar', function (data) {
                 startProgressBar();
-                $("#hot-reload-progress-bar").css('background-color', '#f3f3f3');
                 updateProgressBar(20);
             });
             socket.on('HOT_RELOAD_JSX', function (data) {
+                console.log('data => ', data);
                 updateProgressBar(40);
                 hotReloader.hotReload(data.path, function (err, result) {
                     if (err) {
@@ -82,8 +80,7 @@ define(["require", "exports", "socketio", "@hot-reloader", "backbone", "jquery"]
                         updateProgressBar(60);
                         setTimeout(function () {
                             updateProgressBar(80);
-                            console.log('about to reload backbone history loadurl');
-                            Backbone.history.loadUrl(Backbone.history.fragment);
+                            window.dispatchEvent(new Event('hashchange'));
                             updateProgressBar(100);
                         }, 100);
                     }
@@ -101,7 +98,6 @@ define(["require", "exports", "socketio", "@hot-reloader", "backbone", "jquery"]
                     require(['#allCSS'], function (allCSS) {
                         allCSS[filename] = result;
                         updateProgressBar(80);
-                        Backbone.history.loadUrl(Backbone.history.fragment);
                         updateProgressBar(100);
                     });
                 });

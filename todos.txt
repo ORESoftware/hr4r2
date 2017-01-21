@@ -1,1 +1,28 @@
 http://roylee0704.github.io/react-flexbox-grid/
+http://redux.js.org/docs/recipes/ReducingBoilerplate.html
+
+https://cdnjs.com/libraries/redux/tutorials/react-redux-beginners
+https://github.com/happypoulp/redux-tutorial
+
+http://www.2ality.com/2015/03/no-promises.html
+
+http://stackoverflow.com/questions/7627113/save-the-console-log-in-chrome-to-a-file
+
+
+https://github.com/Microsoft/TypeScript/issues/13591#issuecomment-274177991
+
+https://martinfowler.com/bliki/CQRS.html
+
+https://www.typescriptlang.org/docs/handbook/triple-slash-directives.html
+
+
+/// <amd-module name="NamedModule"/>
+
+/// <amd-dependency path="amd-explicit" />
+
+
+import bar = module('super');
+
+
+
+https://github.com/Microsoft/TypeScript/issues/13606#issuecomment-274219911
