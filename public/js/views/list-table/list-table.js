@@ -5,20 +5,15 @@ var __extends = (this && this.__extends) || function (d, b) {
 };
 define(["require", "exports", "react"], function (require, exports, React) {
     "use strict";
-    //
     var ListTable = (function (_super) {
         __extends(ListTable, _super);
         function ListTable(props, context) {
-            var _this = 
-            // We use the constructor to make sure our eventHandlers know of `this`
-            // Otherwise they will inherit the normal event arguments
-            _super.call(this, props, context) || this;
+            var _this = _super.call(this, props, context) || this;
             _this.addItem = _this.addItem.bind(_this);
             _this.removeItem = _this.removeItem.bind(_this);
             _this.editItem = _this.editItem.bind(_this);
             return _this;
         }
-        // These event handlers (react) will be responsible for dispatching (redux) our action creators (redux)
         ListTable.prototype.addItem = function () {
         };
         ListTable.prototype.removeItem = function (index) {
@@ -27,12 +22,7 @@ define(["require", "exports", "react"], function (require, exports, React) {
         };
         ListTable.prototype.render = function () {
             var _this = this;
-            // ES6 desconstruct some constants from our props
-            // Short hand syntax for saying `const items = this.props.items`
             var _a = this.props, items = _a.items, addItem = _a.addItem;
-            // Here we essentially just want to loop over our `items` and render the appropiate html
-            // Not too much going on, just take note of the `onChange` and `onClick` which
-            // call the handlers above
             return (React.createElement("div", null,
                 React.createElement("table", null,
                     React.createElement("tbody", null, map(items, function (item, index) {

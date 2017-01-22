@@ -2,39 +2,6 @@
   "compilerOptions": {
     "baseUrl": "public",
     "paths": {
-      "rxjs": [
-        "//cdnjs.cloudflare.com/ajax/libs/rxjs/5.0.1/Rx"
-      ],
-      "async": [
-        "//cdnjs.cloudflare.com/ajax/libs/async/2.1.4/async"
-      ],
-      "react-dom": [
-        "//cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react-dom"
-      ],
-      "react": [
-        "//cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react-with-addons"
-      ],
-      "socket.io": [
-        "//cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.2/socket.io"
-      ],
-      "@hot-reload-handler": [
-        "js/hot-reload-handler"
-      ],
-      "@hot-reloader": [
-        "js/hot-reloader"
-      ],
-      "tslib": [
-        "vendor/tslib"
-      ],
-      "immutable": [
-        "//cdnjs.cloudflare.com/ajax/libs/immutable/3.8.1/immutable"
-      ],
-      "react-redux": [
-        "//cdnjs.cloudflare.com/ajax/libs/react-redux/4.4.5/react-redux"
-      ],
-      "redux": [
-        "//cdnjs.cloudflare.com/ajax/libs/redux/3.5.2/redux"
-      ]
     },
     "types": [
       "node",
@@ -43,10 +10,12 @@
       "react-dom",
       "redux",
       "react-redux",
+      "redux-thunk",
       "async",
       "requirejs",
       "socket.io",
-      "socket.io-client"
+      "socket.io-client",
+      "immutable"
     ],
     "typeRoots": [
       "node_modules/@types"
@@ -59,7 +28,7 @@
     "preserveConstEnums": true,
     "allowJs": true,
     "allowUnreachableCode": true,
-    "moduleResolution": "classic",
+    "moduleResolution": "node",
     "lib": [
       "es2015",
       "dom"

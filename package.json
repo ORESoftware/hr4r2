@@ -3,7 +3,8 @@
   "version": "0.0.1001",
   "private": true,
   "scripts": {
-    "start": "node bin/www.js"
+    "start": "node bin/www.js",
+    "gzip": "gzip -9 ./public/optimized/bundles/common.js"
   },
   "main": "bin/www.js",
   "dependencies": {
@@ -21,12 +22,14 @@
   "devDependencies": {
     "@types/async": "^2.0.38",
     "@types/core-js": "^0.9.35",
+    "@types/immutable": "^3.8.7",
     "@types/lodash": "^4.14.50",
     "@types/node": "^7.0.0",
     "@types/react": "^15.0.0",
     "@types/react-dom": "^0.14.20",
     "@types/react-redux": "^4.4.35",
     "@types/redux": "^3.6.0",
+    "@types/redux-thunk": "^2.1.0",
     "@types/requirejs": "^2.1.28",
     "@types/socket.io": "^1.4.27",
     "@types/socket.io-client": "^1.4.29",

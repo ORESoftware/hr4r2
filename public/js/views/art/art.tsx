@@ -1,5 +1,6 @@
 import * as React from 'react';
-import * as store from 'js/data-stores/redux-store';
+import * as store from '../../data-stores/redux-store';
+import Child from './children/art-child';
 
 export = class Home extends React.Component<any, any> {
 
@@ -22,10 +23,14 @@ export = class Home extends React.Component<any, any> {
     }
 
     render() {
+
+        Child = require('./children/art-child').default;
+
         return (
 
             <div>
                 Wekkkpp zoom peaches
+                <Child />
             </div>
 
         )

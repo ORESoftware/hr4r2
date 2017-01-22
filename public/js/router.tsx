@@ -50,13 +50,13 @@ function handleRoute(props) {
 
 function home() {
 
-    getPage(['js/views/home'], handleRoute({}));
+    getPage(['js/views/home/home'], handleRoute({}));
 }
 
 
 function art() {
 
-    getPage(['js/views/art'], handleRoute({}));
+    getPage(['js/views/art/art'], handleRoute({}));
 }
 
 

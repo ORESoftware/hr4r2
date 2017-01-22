@@ -60,47 +60,16 @@ define(["require", "exports", "@hot-reloader"], function (require, exports, hotR
                 window.throwGlobalError(new Error(data));
             });
             function startProgressBar() {
-                // $("#hot-reload-progress-bar").show();
             }
             function stopProgressBar() {
-                // $("#hot-reload-progress-bar").hide();
             }
             function updateProgressBar(value) {
-                // $("#hot-reload-progress-bar").prop('value', value);
             }
             socket.on('start-progress-bar', function (data) {
                 startProgressBar();
-                // $("#hot-reload-progress-bar").css('background-color', '#f3f3f3');
                 updateProgressBar(20);
             });
-            // socket.on('HOT_RELOAD_JSX', function (data){
-            //
-            //     console.log('hot reload => ready', data.path);
-            //
-            //     updateProgressBar(40);
-            //
-            //     hotReloader.hotReload(data.path, function (err, result) {
-            //
-            //         if (err) {
-            //             alert(err);
-            //             return;
-            //         }
-            //
-            //         updateProgressBar(60);
-            //
-            //         var filename = deCapitalizeFirstLetter(reconcilePath1(data, 'jsx'));
-            //
-            //         require(['#allViews'], function (allViews) {
-            //             allViews[filename] = result;
-            //             updateProgressBar(80);
-            //             Backbone.history.loadUrl(Backbone.history.fragment);
-            //             updateProgressBar(100);
-            //         });
-            //     });
-            // });
             socket.on('HOT_RELOAD_JSX', function (data) {
-                // document.getElementById('progress-bar-unactive-style').disabled = true;
-                // document.getElementById('progress-bar-active-style').disabled = false;
                 console.log('data => ', data);
                 updateProgressBar(40);
                 hotReloader.hotReload(data.path, function (err, result) {
@@ -111,13 +80,8 @@ define(["require", "exports", "@hot-reloader"], function (require, exports, hotR
                         updateProgressBar(60);
                         setTimeout(function () {
                             updateProgressBar(80);
-                            // const href = String(window.location.hash).slice(1);
-                            // window.location.hash = 'home';
                             window.dispatchEvent(new Event('hashchange'));
-                            // Backbone.history.loadUrl(Backbone.history.fragment);
                             updateProgressBar(100);
-                            // document.getElementById('progress-bar-unactive-style').disabled = false;
-                            // document.getElementById('progress-bar-active-style').disabled = true;
                         }, 100);
                     }
                 });
@@ -134,7 +98,6 @@ define(["require", "exports", "@hot-reloader"], function (require, exports, hotR
                     require(['#allCSS'], function (allCSS) {
                         allCSS[filename] = result;
                         updateProgressBar(80);
-                        // Backbone.history.loadUrl(Backbone.history.fragment);
                         updateProgressBar(100);
                     });
                 });

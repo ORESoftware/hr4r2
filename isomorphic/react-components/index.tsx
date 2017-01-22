@@ -11,18 +11,39 @@ export class Demo extends React.Component<DemoProps, any> {
 
     constructor(props: DemoProps) {
         super(props);
+        this.getScript = this.getScript.bind(this);
     }
 
+    getScript() {
+        return 'define(\"@AdminUIConfig\", [], function () {' +
+            ' return new Object();' +
+            '});'
+    }
+
+    getProdHead() {
+        return (
+            <script src="/optimized/bundles/common.js"></script>
+        )
+    }
+
+    getDevHead() {
+        return (
+            <script data-main="/js/main" src="/vendor/require.js"></script>
+        )
+    }
+
+
     render() {
+
+        const isDev =  true || process.env.NODE_ENV === 'dev';
         return (
             <html>
             <head>
-                <script data-main="/js/main" src="/vendor/require.js"></script>
-                <script>
-                    define('@AdminUIConfig', [], function () {
-                    return new Object(<%- data %>);
-                });
-                </script>
+                {isDev ? this.getDevHead() : this.getProdHead()}
+
+                {/*<script>*/}
+                    {/*{this.getScript()}*/}
+                {/*</script>*/}
 
             </head>
             <body>

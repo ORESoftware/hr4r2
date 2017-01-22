@@ -14,7 +14,12 @@ if (!('onhashchange' in window)) {
 requirejs.config({
     enforceDefine: false,
     waitSeconds: 7,
-    baseUrl: '/',
+    baseUrl: '.',
+    bundles: {
+        'optimized/bundles/common': {},
+        'optimized/bundles/home-view': {},
+        'optimized/bundles/art-view': {}
+    },
     paths: {
         'rxjs': '//cdnjs.cloudflare.com/ajax/libs/rxjs/5.0.1/Rx',
         'async': '//cdnjs.cloudflare.com/ajax/libs/async/2.1.4/async',
@@ -28,7 +33,7 @@ requirejs.config({
         'react-redux': '//cdnjs.cloudflare.com/ajax/libs/react-redux/4.4.5/react-redux',
         'redux': '//cdnjs.cloudflare.com/ajax/libs/redux/3.5.2/redux',
         'list-table': 'js/views/list-table',
-        'firebase': '//www.gstatic.com/firebasejs/3.6.2/firebase.js',
+        'firebase': '//www.gstatic.com/firebasejs/3.6.2/firebase',
         'redux-thunk': '//cdnjs.cloudflare.com/ajax/libs/redux-thunk/2.2.0/redux-thunk'
     },
     map: {
@@ -48,7 +53,10 @@ var deps = [
     'socket.io',
     'async',
     'rxjs',
-    'immutable'
+    'immutable',
+    'redux-thunk',
+    'firebase',
+    'rxjs'
 ];
 require(deps, function () {
     require(['js/application'], function (Application) {
