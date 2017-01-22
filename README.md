@@ -23,7 +23,7 @@ It will also give you links back to Reddit if you care to read about posts on Re
 # Here is the expected output when you load the page:
 
 
-![Image of project](https://octodex.github.com/images/yaktocat.png)
+![Image of project](https://github.com/ORESoftware/hr4r2/blob/master/intuit.png)
 
 
 Notice the orange and blue colors :)
