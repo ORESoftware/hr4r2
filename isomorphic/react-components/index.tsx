@@ -41,10 +41,6 @@ export class Demo extends React.Component<DemoProps, any> {
             <head>
                 {isDev ? this.getDevHead() : this.getProdHead()}
 
-                {/*<script>*/}
-                    {/*{this.getScript()}*/}
-                {/*</script>*/}
-
             </head>
             <body>
             <div id="root">
