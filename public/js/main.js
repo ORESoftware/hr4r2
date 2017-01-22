@@ -1,13 +1,3 @@
-/* globals console define require React async */
-//http://ozkatz.github.io/converting-an-existing-backbonejs-project-to-requirejs.html
-//https://github.com/volojs/create-template
-//http://www.webdeveasy.com/optimize-requirejs-projects/
-//TODO: http://stackoverflow.com/questions/19827912/package-html-templates-in-require-js-optimizer
-//TODO: https://cdnjs.com/libraries/backbone.js/tutorials/organizing-backbone-using-modules
-//TODO: http://code.tutsplus.com/tutorials/game-on-backbone-and-ember--net-26836
-//TODO: http://stackoverflow.com/questions/8780775/text-files-in-the-path-configuration-file
-//TODO: http://blog.mayflower.de/3937-Backbone-React.html
-//TODO: https://github.com/philix/jsx-requirejs-plugin
 if (!('onhashchange' in window)) {
     alert("The browser does *not* support the hashchange event!");
 }

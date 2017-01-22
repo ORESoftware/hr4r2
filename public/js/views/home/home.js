@@ -26,9 +26,6 @@ define(["require", "exports", "react", "../../data-stores/redux-store"], functio
         };
     };
     var i = 0;
-    function onClick(comp) {
-        store.dispatch(asyncActionCreator());
-    }
     return (function (_super) {
         __extends(Home, _super);
         function Home(props) {
@@ -42,7 +39,7 @@ define(["require", "exports", "react", "../../data-stores/redux-store"], functio
             var _this = this;
             var s = store.getState();
             this.unsubscribe = store.subscribe(function () {
-                console.log('home is subscribed => ' + i++);
+                console.log('home is subscribed => ' + i++, 'items =>', store.getState().items);
                 _this.setState({
                     items: store.getState().items
                 });
@@ -58,10 +55,15 @@ define(["require", "exports", "react", "../../data-stores/redux-store"], functio
                 return (React.createElement("div", null, item));
             });
         };
+        Home.prototype.onClick = function () {
+            store.dispatch(asyncActionCreator());
+        };
         Home.prototype.render = function () {
             return (React.createElement("div", null,
-                React.createElement("button", { onClick: onClick(this) }, " Retrieve SubReddits on ReactJS "),
-                this.collateRedditResuls()));
+                React.createElement("button", { onClick: this.onClick }, " Retrieve SubReddits on ReactJS"),
+                React.createElement("div", null,
+                    React.createElement("b", null, " Results:"),
+                    this.collateRedditResuls())));
         };
         return Home;
     }(React.Component));

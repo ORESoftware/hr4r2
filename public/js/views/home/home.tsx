@@ -35,11 +35,8 @@ interface State {
     items: Array[]
 }
 
-function onClick(comp){
-    store.dispatch(asyncActionCreator())
-}
 
-export = class Home extends React.Component<any, any> {
+export = class Home extends React.Component<any, State> {
 
     unsubscribe: Function;
 
@@ -53,7 +50,8 @@ export = class Home extends React.Component<any, any> {
     componentDidMount() {
         const s = store.getState();
         this.unsubscribe = store.subscribe(() => {
-            console.log('home is subscribed => ' + i++);
+            console.log('home is subscribed => ' + i++,
+                'items =>', store.getState().items);
             this.setState({
                 items: store.getState().items
             });
@@ -75,12 +73,19 @@ export = class Home extends React.Component<any, any> {
         });
     }
 
+    onClick(){
+        store.dispatch(asyncActionCreator())
+    }
+
     render() {
         return (
 
             <div>
-                <button onClick={onClick(this)}> Retrieve SubReddits on ReactJS </button>
+                <button onClick={this.onClick}> Retrieve SubReddits on ReactJS</button>
+                <div>
+                    <b> Results:</b>
                 {this.collateRedditResuls()}
+                </div>
             </div>
 
         )

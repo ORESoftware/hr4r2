@@ -46,13 +46,14 @@ export class Demo extends React.Component<DemoProps, any> {
                 {/*</script>*/}
 
             </head>
-            <body>
-            <div id="root">
-                HELLO THERE
-            </div>
             <div>
                 <progress id="hot-reload-progress-bar" value="100" max="100"></progress>
             </div>
+            <body>
+            <div id="root">
+                Initial Home Page
+            </div>
+
             </body>
             </html>
         )
