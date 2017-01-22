@@ -3,7 +3,7 @@
   "version": "0.0.1001",
   "private": true,
   "scripts": {
-    "start": "node bin/www.js",
+    "start": "./run.sh",
     "gzip": "gzip -9 ./public/optimized/bundles/common.js"
   },
   "main": "bin/www.js",
@@ -33,6 +33,7 @@
     "@types/requirejs": "^2.1.28",
     "@types/socket.io": "^1.4.27",
     "@types/socket.io-client": "^1.4.29",
+    "@types/uuid": "^2.0.29",
     "chokidar": "^1.6.1",
     "requirejs": "^2.3.2",
     "rimraf": "^2.5.4",

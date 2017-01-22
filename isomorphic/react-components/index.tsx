@@ -15,9 +15,14 @@ export class Demo extends React.Component<DemoProps, any> {
     }
 
     getScript() {
-        return 'define(\"@AdminUIConfig\", [], function () {' +
-            ' return new Object();' +
-            '});'
+
+        const config = JSON.stringify({
+            env: process.env.NODE_ENV
+        });
+
+        return {__html:'define("@config", [], function () {' +
+            ' return ' + config +';' +
+            '});'}
     }
 
     getProdHead() {
@@ -35,12 +40,12 @@ export class Demo extends React.Component<DemoProps, any> {
 
     render() {
 
-        const isDev =  true || process.env.NODE_ENV === 'dev';
+        const isDev =  process.env.NODE_ENV !== 'production';
         return (
             <html>
             <head>
                 {isDev ? this.getDevHead() : this.getProdHead()}
-
+                <script dangerouslySetInnerHTML={this.getScript()}/>
             </head>
             <div>
                 <progress id="hot-reload-progress-bar" value="100" max="100"></progress>

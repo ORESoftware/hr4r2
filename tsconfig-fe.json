@@ -15,7 +15,8 @@
       "requirejs",
       "socket.io",
       "socket.io-client",
-      "immutable"
+      "immutable",
+      "uuid"
     ],
     "typeRoots": [
       "node_modules/@types"

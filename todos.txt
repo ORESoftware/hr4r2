@@ -24,5 +24,4 @@ https://www.typescriptlang.org/docs/handbook/triple-slash-directives.html
 import bar = module('super');
 
 
-
 https://github.com/Microsoft/TypeScript/issues/13606#issuecomment-274219911

@@ -1,5 +1,6 @@
 import * as React from 'react';
 import * as store from '../../data-stores/redux-store';
+import * as uuid from 'uuid';
 
 
 var asyncActionCreator = function () {
@@ -16,7 +17,11 @@ var asyncActionCreator = function () {
                 dispatch({
                     type: 'GET_REACTJS_REDDIT',
                     result: json.data.children.map(function (c) {
-                        return c.data.title;
+                        return {
+                            title: c.data.title,
+                            description: c.data.public_description,
+                            image: c.data.header_img
+                        };
                     })
                 })
             });
@@ -32,7 +37,8 @@ var asyncActionCreator = function () {
 let i = 0;
 
 interface State {
-    items: Array[]
+    items: Array[],
+    clicked?: boolean
 }
 
 
@@ -42,7 +48,11 @@ export = class Home extends React.Component<any, State> {
 
     constructor(props) {
         super(props);
+
+        this.onClickRetrieve = this.onClickRetrieve.bind(this);
+
         this.state = {
+            clicked: false,
             items: []
         }
     }
@@ -65,26 +75,66 @@ export = class Home extends React.Component<any, State> {
     }
 
     collateRedditResuls() {
-        return this.state.items.map(function (item) {
-            console.log('item => ', item);
+        return this.state.items.map(function (item, index) {
+
+            const style = {
+                backgroundColor: index%2===0? "#ffa500" :"#0000CD"
+            };
+
             return (
-                <div>{item}</div>
+                <tr style={style} key={ uuid()}>
+                    <td>{item.title}</td>
+                    <td> {item.description}</td>
+                    <td><img src={item.image}/></td>
+                </tr>
             )
         });
     }
 
-    onClick(){
+    onClickRetrieve() {
+        this.state.clicked = true;
         store.dispatch(asyncActionCreator())
+    }
+
+    getTableHeader() {
+        return (
+            <thead>
+            <tr>
+                <th> Title</th>
+                <th> Description</th>
+                <th> Image </th>
+            </tr>
+            </thead>
+        )
+    }
+
+    getTableBody() {
+        return (
+            <tbody>
+            {this.collateRedditResuls()}
+            </tbody>
+        )
     }
 
     render() {
         return (
 
             <div>
-                <button onClick={this.onClick}> Retrieve SubReddits on ReactJS</button>
+                <button onClick={this.onClickRetrieve}> Click to retrieve SubReddits on ReactJS</button>
                 <div>
-                    <b> Results:</b>
-                {this.collateRedditResuls()}
+                    <div>
+                        ______________________________
+                    </div>
+                    <b> Reddit Search Results:</b>
+                    <div>
+                        ______________________________
+                    </div>
+                    {this.state.clicked ?
+                        <table>
+                            {this.getTableHeader()}
+                            {this.getTableBody()}
+                        </table>
+                        : null}
                 </div>
             </div>
 
