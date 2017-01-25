@@ -1,6 +1,5 @@
 
 
-# Alex Mills' interview project for Intuit
 
 This is a Node.js / React / Redux / TypeScript project
 
@@ -20,11 +19,5 @@ It will also give you links back to Reddit if you care to read about posts on Re
 `npm install && npm start`
 
 
-# Here is the expected output when you load the page:
 
-
-![Image of project](https://github.com/ORESoftware/hr4r2/blob/master/intuit.png)
-
-
-Notice the orange and blue colors :)
 
