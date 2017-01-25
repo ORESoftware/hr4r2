@@ -1,10 +1,11 @@
 {
   "compilerOptions": {
-    "baseUrl": "public",
+    "baseUrl": "/",
     "paths": {
+      "@hot-reload-handler": [ "public/js/hot-reload-handler"],
+      "@hot-reloader": [ "public/js/hot-reloader"]
     },
     "types": [
-      "node",
       "lodash",
       "react",
       "react-dom",
@@ -16,7 +17,8 @@
       "socket.io",
       "socket.io-client",
       "immutable",
-      "uuid"
+      "uuid",
+      "whatwg-fetch"
     ],
     "typeRoots": [
       "node_modules/@types"
@@ -27,14 +29,20 @@
     "noImplicitAny": false,
     "removeComments": true,
     "preserveConstEnums": true,
-    "allowJs": true,
+    "allowJs": false,
     "allowUnreachableCode": true,
-    "moduleResolution": "node",
+    "moduleResolution": "classic",
     "lib": [
       "es2015",
+      "es2016",
       "dom"
     ]
   },
+  "files":[
+    "d.ts/index.d.ts",
+    "node_modules/redux/index.d.ts",
+    "node_modules/redux-thunk/index.d.ts"
+  ],
   "include": [
     "./public/**/*.ts",
     "./public/**/*.tsx"

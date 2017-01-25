@@ -1,13 +1,16 @@
 {
   "compilerOptions": {
+    "paths": {
+      "@hot-reload-handler": [ "public/js/hot-reload-handler"],
+      "@hot-reloader": [ "public/js/hot-reloader"]
+    },
     "types": [
       "node",
       "lodash",
       "react",
       "react-dom",
       "async",
-      "socket.io",
-      "socket.io-client"
+      "socket.io"
     ],
     "typeRoots": [
       "node_modules/@types"
@@ -22,6 +25,7 @@
     "allowUnreachableCode": true,
     "lib": [
       "es2015",
+      "es2016",
       "dom"
     ]
   },
