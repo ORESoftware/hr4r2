@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "baseUrl": "/",
+    "baseUrl": ".",
     "paths": {
       "@hot-reload-handler": [ "public/js/hot-reload-handler"],
       "@hot-reloader": [ "public/js/hot-reloader"]
@@ -23,7 +23,6 @@
     "typeRoots": [
       "node_modules/@types"
     ],
-    "compileOnSave": true,
     "target": "es5",
     "module": "amd",
     "noImplicitAny": false,
@@ -38,6 +37,7 @@
       "dom"
     ]
   },
+  "compileOnSave": false,
   "files":[
     "d.ts/index.d.ts",
     "node_modules/redux/index.d.ts",

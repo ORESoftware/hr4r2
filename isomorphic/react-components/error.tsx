@@ -2,7 +2,7 @@ import * as React from 'react';
 
 
 
-export class ErrorView extends React.Component {
+export class ErrorView extends React.Component <any, any> {
 
     private error: Error;
 
