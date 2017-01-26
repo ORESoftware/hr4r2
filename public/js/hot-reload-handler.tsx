@@ -90,15 +90,15 @@ function getConnection() {
         });
 
 
-        function startProgressBar() {
+        const startProgressBar = function startProgressBar() {
             // $("#hot-reload-progress-bar").show();
         }
 
-        function stopProgressBar() {
+        const stopProgressBar = function stopProgressBar() {
             // $("#hot-reload-progress-bar").hide();
         }
 
-        function updateProgressBar(value) {
+        const updateProgressBar = function updateProgressBar(value) {
             // $("#hot-reload-progress-bar").prop('value', value);
         }
 

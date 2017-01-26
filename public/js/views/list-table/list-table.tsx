@@ -2,7 +2,7 @@
 import * as React from 'react';
 
 //
-class ListTable extends React.Component {
+class ListTable extends React.Component<any, any> {
 
 
     constructor (props, context) {
