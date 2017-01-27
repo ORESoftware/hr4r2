@@ -6,7 +6,6 @@ const async = require('async');
 const requirejs = require('requirejs');
 
 const fs = require('fs');
-const rimraf = require('rimraf');
 const path = require('path');
 
 const projectRoot = path.resolve(__dirname, '..');
@@ -16,7 +15,6 @@ function resolve(p) {
 }
 
 
-rimraf.sync(resolve('public/optimized'));
 // >>>> https://github.com/requirejs/example-multipage
 
 const _paths = {
@@ -37,6 +35,7 @@ const _paths = {
 };
 
 const paths = Object.assign(_paths, {
+    '@config': 'empty:',
     '@AdminUIConfig': 'empty:',
     requireLib: 'vendor/require',
     async: 'empty:',
@@ -80,14 +79,14 @@ const configs = {
     HomeView: _.merge({}, baseConfig, {
         out: resolve('public/optimized/bundles/home-view.js'),
         include: [
-            resolve('public/js/views/home.js'),
+            resolve('public/js/views/home/home.js'),
         ]
     }),
 
     ArtView: _.merge({}, baseConfig, {
         out: resolve('public/optimized/bundles/art-view.js'),
         include: [
-            resolve('public/js/views/art.js'),
+            resolve('public/js/views/art/art.js'),
         ]
     }),
 

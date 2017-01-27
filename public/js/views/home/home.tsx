@@ -1,5 +1,6 @@
 import * as React from 'react';
-import * as store from '../../data-stores/redux-store';
+import * as store from '@redux-store';
+// import store = require('../../data-stores/redux-store');
 import * as uuid from 'uuid';
 
 

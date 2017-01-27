@@ -4,7 +4,8 @@
     "jsx": "react",
     "paths": {
       "@hot-reload-handler": [ "public/js/hot-reload-handler"],
-      "@hot-reloader": [ "public/js/hot-reloader"]
+      "@hot-reloader": [ "public/js/hot-reloader"],
+      "@redux-store":["public/js/data-stores/redux-store"]
     },
     "types": [
       "node",

@@ -25,7 +25,8 @@ requirejs.config({
         'list-table': 'js/views/list-table',
         'firebase': '//www.gstatic.com/firebasejs/3.6.2/firebase',
         'redux-thunk': '//cdnjs.cloudflare.com/ajax/libs/redux-thunk/2.2.0/redux-thunk',
-        'uuid': '//cdnjs.cloudflare.com/ajax/libs/node-uuid/1.4.7/uuid'
+        'uuid': '//cdnjs.cloudflare.com/ajax/libs/node-uuid/1.4.7/uuid',
+        '@redux-store': 'js/data-stores/redux-store'
     },
     map: {
         '*': {

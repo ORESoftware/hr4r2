@@ -3,7 +3,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-define(["require", "exports", "react", "../../data-stores/redux-store", "./children/art-child"], function (require, exports, React, store, art_child_1) {
+define(["require", "exports", "react", "@redux-store", "./children/art-child"], function (require, exports, React, store, art_child_1) {
     "use strict";
     return (function (_super) {
         __extends(Home, _super);
