@@ -3,7 +3,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-define(["require", "exports", "react", "../../data-stores/redux-store", "uuid"], function (require, exports, React, store, uuid) {
+define(["require", "exports", "react", "@redux-store", "uuid"], function (require, exports, React, store, uuid) {
     "use strict";
     var asyncActionCreator = function () {
         return function (dispatch) {

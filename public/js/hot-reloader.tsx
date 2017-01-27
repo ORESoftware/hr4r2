@@ -9,7 +9,7 @@
 
 const globalRequire = window.require;
 
-const hotReloadSimple = function (item, cb) {
+const hotReload = function (item, cb) {
     globalRequire.undef(item);
     globalRequire([item], function (file) {
         cb(null, file);
@@ -17,6 +17,6 @@ const hotReloadSimple = function (item, cb) {
 };
 
 export = {
-    hotReload: hotReloadSimple
-}
+    hotReload
+};
 

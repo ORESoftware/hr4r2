@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as store from '../../../data-stores/redux-store';
+import * as store from '@redux-store';
 
 export default class ArtChild extends React.Component<any, any> {
 

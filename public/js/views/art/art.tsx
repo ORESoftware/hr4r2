@@ -1,5 +1,7 @@
 import * as React from 'react';
-import * as store from '../../data-stores/redux-store';
+import * as store from '@redux-store';
+
+// import store = require('../../data-stores/redux-store');
 import Child from './children/art-child';
 
 export = class Home extends React.Component<any, any> {
