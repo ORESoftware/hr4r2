@@ -20,17 +20,15 @@ requirejs.config({
     baseUrl: '.',  // . (dot) shoud mean cwd
 
     bundles: {
-        'optimized/bundles/common':{
+        'optimized/bundles/common':[]
 
-        },
+        ,
 
-        'optimized/bundles/home-view':{
+        'optimized/bundles/home-view':[]
 
-        },
+        ,
 
-        'optimized/bundles/art-view':{
-
-        }
+        'optimized/bundles/art-view':[]
     },
 
     paths: {

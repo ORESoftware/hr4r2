@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "baseUrl": ".",
+    "jsx": "react",
     "paths": {
       "@hot-reload-handler": [ "public/js/hot-reload-handler"],
       "@hot-reloader": [ "public/js/hot-reloader"],
@@ -14,15 +15,10 @@
       "async",
       "socket.io"
     ],
-    "typeRoots": [
-      "node_modules/@types"
-    ],
     "target": "es5",
     "module": "commonjs",
     "noImplicitAny": false,
     "removeComments": true,
-    "preserveConstEnums": true,
-    "allowJs": true,
     "allowUnreachableCode": true,
     "lib": [
       "es2015",
