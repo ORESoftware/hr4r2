@@ -7,7 +7,7 @@
       "@hot-reloader": [ "public/js/hot-reloader"],
       "redux": ["node_modules/redux/index"],
       "redux-thunk": ["node_modules/redux-thunk/index"],
-      "uuid": ["d.ts/uuid"]
+      "uuid": ["d.ts/uuid"],
       "@redux-store":["public/js/data-stores/redux-store"]
     },
     "types": [

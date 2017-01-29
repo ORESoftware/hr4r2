@@ -59,46 +59,46 @@ define(["require", "exports", "@hot-reloader"], function (require, exports, hotR
             socket.on('.jsx transform error', function (data) {
                 window.throwGlobalError(new Error(data));
             });
-            function startProgressBar() {
-            }
-            function stopProgressBar() {
-            }
-            function updateProgressBar(value) {
-            }
+            var startProgressBar_1 = function startProgressBar() {
+            };
+            var stopProgressBar = function stopProgressBar() {
+            };
+            var updateProgressBar_1 = function updateProgressBar(value) {
+            };
             socket.on('start-progress-bar', function (data) {
-                startProgressBar();
-                updateProgressBar(20);
+                startProgressBar_1();
+                updateProgressBar_1(20);
             });
             socket.on('HOT_RELOAD_JSX', function (data) {
                 console.log('data => ', data);
-                updateProgressBar(40);
+                updateProgressBar_1(40);
                 hotReloader.hotReload(data.path, function (err, result) {
                     if (err) {
                         alert(err);
                     }
                     else {
-                        updateProgressBar(60);
+                        updateProgressBar_1(60);
                         setTimeout(function () {
-                            updateProgressBar(80);
+                            updateProgressBar_1(80);
                             window.dispatchEvent(new Event('hashchange'));
-                            updateProgressBar(100);
+                            updateProgressBar_1(100);
                         }, 100);
                     }
                 });
             });
             socket.on('hot-reload (.css)', function (data) {
-                updateProgressBar(40);
+                updateProgressBar_1(40);
                 hotReloader.hotReload(data, function (err, result) {
                     if (err) {
                         alert(err);
                         return;
                     }
-                    updateProgressBar(60);
+                    updateProgressBar_1(60);
                     var filename = String(data).replace('text!', '');
                     require(['#allCSS'], function (allCSS) {
                         allCSS[filename] = result;
-                        updateProgressBar(80);
-                        updateProgressBar(100);
+                        updateProgressBar_1(80);
+                        updateProgressBar_1(100);
                     });
                 });
             });

@@ -6,9 +6,9 @@ requirejs.config({
     waitSeconds: 7,
     baseUrl: '.',
     bundles: {
-        'optimized/bundles/common': {},
-        'optimized/bundles/home-view': {},
-        'optimized/bundles/art-view': {}
+        'optimized/bundles/common': [],
+        'optimized/bundles/home-view': [],
+        'optimized/bundles/art-view': []
     },
     paths: {
         'rxjs': '//cdnjs.cloudflare.com/ajax/libs/rxjs/5.0.1/Rx',
