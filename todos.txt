@@ -25,3 +25,6 @@ import bar = module('super');
 
 
 https://github.com/Microsoft/TypeScript/issues/13606#issuecomment-274219911
+
+
+https://github.com/systemjs/systemjs/issues/1546#issuecomment-275071040
