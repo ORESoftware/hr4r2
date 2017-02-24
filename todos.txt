@@ -28,3 +28,17 @@ https://github.com/Microsoft/TypeScript/issues/13606#issuecomment-274219911
 
 
 https://github.com/systemjs/systemjs/issues/1546#issuecomment-275071040
+
+
+//////////////////////////
+
+
+https://github.com/Microsoft/TypeScript/issues/13538
+
+@ORESoftware What are you using for bundling?
+With Webpack, you need to set:
+
+In tsconfig.json#compilerOptions: "isolatedModules": true
+In tsconfig.json#awesomeTypescriptLoaderOptions: "transpileOnly": true, "useTranspileModule": true
+
+////////////////////////////////

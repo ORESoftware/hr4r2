@@ -11,143 +11,138 @@ const cp = require('child_process');
 const Server = require('socket.io');
 const io = new Server(3980, {});
 
-
 const publicPath = path.resolve(__dirname + '/public');
 const publicPathLen = publicPath.length;
 
 const clients = [];
 
-function getCount() {
-    return ' => connection count:' + clients.length
+function getCount () {
+  return ' => connection count:' + clients.length
 }
 
 io.on('connection', function (socket) {
 
-    // only start watching when there is a connection
-    startWatching();
+  // only start watching when there is a connection
+  startWatching();
 
-    clients.push(socket);
-    console.log(' => new dev server connection! ' + getCount());
+  clients.push(socket);
+  console.log(' => new dev server connection! ' + getCount());
 
-    socket.on('disconnect', function () {
+  socket.on('disconnect', function () {
 
-        console.log('dev server user disconnected ' + getCount());
-        clients.splice(clients.indexOf(socket), 1);
+    console.log('dev server user disconnected ' + getCount());
+    clients.splice(clients.indexOf(socket), 1);
 
-    });
+  });
 });
-
 
 const strm = fs.createWriteStream(__dirname + '/dev-server.log');
 
-
 const watcher = chokidar.watch(__dirname + '/**/*.tsx', {
-    // ignored: /\.[^tsx]$/,
-    // ignored: '!**/*.tsx',
-    // ignored: ['**/.git/**/*', '**/**.js', '**/.idea/**/*'],
-    ignoreInitial: true
+  // ignored: /\.[^tsx]$/,
+  // ignored: '!**/*.tsx',
+  // ignored: ['**/.git/**/*', '**/**.js', '**/.idea/**/*'],
+  ignoreInitial: true
 });
 
+function runTSC (path, cb) {
 
-function runTSC(path, cb) {
+  const shell = cp.spawn('bash');
 
-    const shell = cp.spawn('bash');
+  let stderr = '';
+  let stdout = '';
 
-    let stderr = '';
-    let stdout = '';
+  shell.once('close', function (code) {
 
-    shell.once('close', function (code) {
+    shell.unref();
+    if (code < 1 || !strict) {
+      cb(null)
+    }
+    else {
+      console.error(' => stderr from tsc child process => \n' + stderr);
+    }
+  });
 
-        shell.unref();
+  console.log('path => ', String(path).trim());
 
-        if (code < 1 || !strict) {
-            cb(null)
-        }
-        else {
-            console.error(' => stderr from tsc child process => \n' + stderr);
-        }
-    });
+  shell.stderr.setEncoding('utf8');
+  shell.stdout.setEncoding('utf8');
 
-    console.log('path => ', String(path).trim());
+  shell.stderr.on('data', function (d) {
+    stderr += d;
+  });
 
-    shell.stderr.setEncoding('utf8');
-    shell.stdout.setEncoding('utf8');
+  shell.stdout.pipe(process.stdout);
 
-    shell.stderr.on('data', function (d) {
-        stderr += d;
-    });
-
-    shell.stdout.pipe(process.stdout);
-
-    shell.stdin.write('tsc --skipLibCheck --noResolve --jsx react --module amd --target es5 ' + path + '\n');
+  shell.stdin.write('tsc --skipLibCheck --noResolve --jsx react --module amd --target es5 ' + path + '\n');
+  process.nextTick(function () {
     shell.stdin.end();
+  });
 
 }
-
 
 let callable = true;
 
 startWatching();
 
-function startWatching() {
+function startWatching () {
 
-    if (!callable) {
-        return;
-    }
+  if (!callable) {
+    return;
+  }
 
-    callable = false;
+  callable = false;
 
-    watcher
-        .on('add', path => {
+  watcher
+  .on('add', path => {
 
-            // const sockets = io.sockets.connected;
-            const sockets = clients;
+    // const sockets = io.sockets.connected;
+    const sockets = clients;
 
-            sockets.forEach(function (socket) {
-                socket.emit('HOT_RELOAD_JSX', {
-                    event: 'add',
-                    path: path
-                });
-            });
-        })
+    sockets.forEach(function (socket) {
+      socket.emit('HOT_RELOAD_JSX', {
+        event: 'add',
+        path: path
+      });
+    });
+  })
 
+  .on('change', path => {
 
-        .on('change', path => {
+    runTSC(path, function () {
 
-            runTSC(path, function () {
+      if (String(path).startsWith(publicPath)) {
 
-                if (String(path).startsWith(publicPath)) {
+        path = String(path).slice(publicPathLen + 1, path.length - 4);
+        const sockets = clients;
 
-                    path = String(path).slice(publicPathLen + 1, path.length - 4);
-                    const sockets = clients;
+        console.log('alrighty then sending message to front-end...');
 
-                    console.log('alrighty then sending message to front-end...');
-
-                    sockets.forEach(function (socket) {
-                        socket.emit('HOT_RELOAD_JSX', {
-                            event: 'change',
-                            path: path
-                        });
-                    });
-
-                }
-
-            });
-
-        })
-
-        .on('unlink', path => {
-
-            const sockets = clients;
-
-            sockets.forEach(function (socket) {
-                socket.send('HOT_RELOAD_JSX', {
-                    event: 'unlink',
-                    path: path
-                });
-            });
-
+        sockets.forEach(function (socket) {
+          socket.emit('HOT_RELOAD_JSX', {
+            event: 'change',
+            path: path
+          });
         });
+
+      }
+
+    });
+
+  })
+
+  .on('unlink', path => {
+
+    const sockets = clients;
+
+    sockets.forEach(function (socket) {
+      socket.send('HOT_RELOAD_JSX', {
+        event: 'unlink',
+        path: path
+      });
+    });
+
+  });
 
 }
 

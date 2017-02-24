@@ -10,6 +10,8 @@
 DIST=$(cd $(dirname $0) && pwd)/dist
 rm -rf ${DIST}
 
+cd $(dirname $0)
+
 # build with typescript; use tsc --watch, to watch for changes + transpile incrementally
-cd $(dirname $0) && tsc --pretty --jsx react --project tsconfig-fe.json
-cd $(dirname $0) && tsc --pretty --jsx react --project tsconfig.json
+tsc --pretty --jsx react --project tsconfig-fe.json
+tsc --pretty --jsx react --project tsconfig.json
