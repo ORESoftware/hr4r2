@@ -1,4 +1,6 @@
-module.exports = Object.freeze({
+const path = require('path');
+
+module.exports = {
   exec: 'bin/www.js',
-  exclude: ['.*\.js', 'node_modules', '.git', 'test', 'public']
-});
+  exclude: [path.resolve(__dirname + '/node_modules/.*'), '.git', 'test', 'public','.idea']
+};

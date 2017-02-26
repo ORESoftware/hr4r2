@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-
-./build.sh
-node .
+cd $(dirname $0)
+./@build.sh
+node . &&
 echo "server is running"

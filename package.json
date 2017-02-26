@@ -37,7 +37,8 @@
     "chokidar": "^1.6.1",
     "requirejs": "^2.3.2",
     "rimraf": "^2.5.4",
-    "roodles": "0.0.1008",
-    "socket.io": "^1.7.2"
+    "roodles": "0.0.1013",
+    "socket.io": "^1.7.2",
+    "suman": "github:sumanjs/suman#dev"
   }
 }
