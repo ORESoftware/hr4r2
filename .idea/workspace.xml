@@ -2,26 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2c19d5a1-37c9-4fa0-b740-4fcb25462986" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/@dev.sh" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/@push.sh" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/build.sh" afterPath="$PROJECT_DIR$/@build.sh" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/optimize.sh" afterPath="$PROJECT_DIR$/@optimize.sh" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/run.sh" afterPath="$PROJECT_DIR$/@run.sh" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/touch.sh" afterPath="$PROJECT_DIR$/@touch.sh" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/intuit.png" afterPath="$PROJECT_DIR$/intuit.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/d.ts/index.d.ts" afterPath="$PROJECT_DIR$/d.ts/index.d.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/d.ts/uuid.d.ts" afterPath="$PROJECT_DIR$/d.ts/uuid.d.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/isomorphic/react-components/error.tsx" afterPath="$PROJECT_DIR$/isomorphic/react-components/error.tsx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/views/art/children/art-child.js" afterPath="$PROJECT_DIR$/public/js/views/art/children/art-child.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/views/art/children/art-child.tsx" afterPath="$PROJECT_DIR$/public/js/views/art/children/art-child.tsx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/optimized/bundles/common.js" afterPath="$PROJECT_DIR$/public/optimized/bundles/common.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/optimized/bundles/home-view.js" afterPath="$PROJECT_DIR$/public/optimized/bundles/home-view.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/roodles.conf.js" afterPath="$PROJECT_DIR$/roodles.conf.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tsconfig-fe-original.json" afterPath="$PROJECT_DIR$/tsconfig-fe-original.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yarn.lock" afterPath="$PROJECT_DIR$/yarn.lock" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/suman-1488089772716/.readme-immediately" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/suman/.readme" afterPath="$PROJECT_DIR$/test/_suman/.readme" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/suman/suman.globals.js" afterPath="$PROJECT_DIR$/test/_suman/suman.globals.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/suman/suman.hooks.js" afterPath="$PROJECT_DIR$/test/_suman/suman.hooks.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/suman/suman.ioc.js" afterPath="$PROJECT_DIR$/test/_suman/suman.ioc.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/suman/suman.once.js" afterPath="$PROJECT_DIR$/test/_suman/suman.once.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/suman/suman.order.js" afterPath="$PROJECT_DIR$/test/_suman/suman.order.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/suman/suman.reporters.js" afterPath="$PROJECT_DIR$/test/_suman/suman.reporters.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/suman.conf.js" afterPath="$PROJECT_DIR$/suman.conf.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -82,7 +72,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="@push.sh" pinned="false" current-in-tab="true">
+      <file leaf-file-name="@push.sh" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/@push.sh">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="162">
@@ -92,12 +82,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name=".readme-immediately" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/suman-1488089772716/.readme-immediately">
+      <file leaf-file-name="suman.conf.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/suman.conf.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="108">
+              <caret line="24" column="26" lean-forward="false" selection-start-line="24" selection-start-column="26" selection-end-line="24" selection-end-column="26" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -127,16 +119,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.tsx" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/routes/index.tsx">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -197,7 +179,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/public/js/hot-reloader.js" />
         <option value="$PROJECT_DIR$/app.tsx" />
         <option value="$PROJECT_DIR$/public/js/css-adder.js" />
         <option value="$PROJECT_DIR$/public/js/application.js" />
@@ -248,6 +229,7 @@
         <option value="$PROJECT_DIR$/node_modules/roodles/index.js" />
         <option value="$PROJECT_DIR$/isomorphic/react-components/error.tsx" />
         <option value="$PROJECT_DIR$/@push.sh" />
+        <option value="$PROJECT_DIR$/suman.conf.js" />
       </list>
     </option>
   </component>
@@ -331,7 +313,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="suman-1488089772716" />
+              <option name="myItemId" value="test" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -492,12 +474,12 @@
       <workItem from="1485926723037" duration="9000" />
       <workItem from="1487462572352" duration="1240000" />
       <workItem from="1487919159203" duration="2613000" />
-      <workItem from="1488086765101" duration="3766000" />
+      <workItem from="1488086765101" duration="4214000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="133236000" />
+    <option name="totallyTimeSpent" value="133684000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -517,6 +499,7 @@
       <window_info id="DB Browser" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="DB Execution Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.40616965" sideWeight="0.50247" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32985386" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32985386" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -529,7 +512,6 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32985386" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -553,20 +535,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/node_modules/@types/redux-thunk/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/redux/index.d.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test-socketio.js" />
     <entry file="file://$PROJECT_DIR$/app.tsx">
       <provider selected="true" editor-type-id="text-editor">
@@ -923,6 +891,24 @@
         <state relative-caret-position="162">
           <caret line="9" column="34" lean-forward="false" selection-start-line="9" selection-start-column="34" selection-end-line="9" selection-end-column="34" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/suman-1488091136239/.readme-immediately">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="95" lean-forward="true" selection-start-line="0" selection-start-column="17" selection-end-line="0" selection-end-column="95" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/suman.conf.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="24" column="26" lean-forward="false" selection-start-line="24" selection-start-column="26" selection-end-line="24" selection-end-column="26" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
