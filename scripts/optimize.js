@@ -1,14 +1,20 @@
 // this script should be run from the public directory (public should be cwd)
 
 
+//core
+const fs = require('fs');
+const path = require('path');
+
+//npm
 const _ = require('lodash');
 const async = require('async');
 const requirejs = require('requirejs');
 
-const fs = require('fs');
-const path = require('path');
-
+//project
 const projectRoot = path.resolve(__dirname, '..');
+
+////////////////////////////////////////////////////////////
+
 
 function resolve(p) {
     return path.resolve(projectRoot, p);
@@ -16,7 +22,6 @@ function resolve(p) {
 
 
 // >>>> https://github.com/requirejs/example-multipage
-
 const _paths = {
     'rxjs': '//cdnjs.cloudflare.com/ajax/libs/rxjs/5.0.1/Rx',
     'async': '//cdnjs.cloudflare.com/ajax/libs/async/2.1.4/async',
@@ -33,6 +38,7 @@ const _paths = {
     'firebase': '//www.gstatic.com/firebasejs/3.6.2/firebase.js',
     'redux-thunk': '//cdnjs.cloudflare.com/ajax/libs/redux-thunk/2.2.0/redux-thunk'
 };
+
 
 const paths = Object.assign(_paths, {
     '@config': 'empty:',
@@ -59,8 +65,9 @@ const baseConfig = _.merge({}, {paths: paths}, {
     logLevel: 0,
 });
 
-const configs = {
 
+
+const configs = {
     //note: this is used for page load
     Common: _.merge({}, {paths: paths}, {
         //'optimizeAllPluginResources': true,
@@ -99,11 +106,7 @@ async.eachSeries(Object.keys(configs), function (key, cb) {
         console.log('build response => ', buildResponse);
         cb(null);
 
-    }, function (err) {
-
-        cb(err);
-
-    });
+    }, cb);
 
 }, function complete(err) {
 

@@ -1,9 +1,7 @@
 'use strict';
 
 const strict = process.argv.indexOf('--strict') > 0;
-
 const chokidar = require('chokidar');
-
 const path = require('path');
 const fs = require('fs');
 const cp = require('child_process');
@@ -23,7 +21,7 @@ function getCount () {
 io.on('connection', function (socket) {
 
   // only start watching when there is a connection
-  startWatching();
+  // startWatching();
 
   clients.push(socket);
   console.log(' => new dev server connection! ' + getCount());
@@ -54,6 +52,7 @@ function runTSC (path, cb) {
 
   shell.once('close', function (code) {
 
+    shell.removeAllListeners();
     shell.unref();
     if (code < 1 || !strict) {
       cb(null)
@@ -81,20 +80,9 @@ function runTSC (path, cb) {
 
 }
 
-let callable = true;
+watcher.once('ready', function () {
 
-startWatching();
-
-function startWatching () {
-
-  if (!callable) {
-    return;
-  }
-
-  callable = false;
-
-  watcher
-  .on('add', path => {
+  watcher.on('add', path => {
 
     // const sockets = io.sockets.connected;
     const sockets = clients;
@@ -105,9 +93,9 @@ function startWatching () {
         path: path
       });
     });
-  })
+  });
 
-  .on('change', path => {
+  watcher.on('change', path => {
 
     runTSC(path, function () {
 
@@ -129,9 +117,9 @@ function startWatching () {
 
     });
 
-  })
+  });
 
-  .on('unlink', path => {
+  watcher.on('unlink', path => {
 
     const sockets = clients;
 
@@ -144,5 +132,9 @@ function startWatching () {
 
   });
 
-}
+});
+
+
+
+
 
