@@ -73,7 +73,7 @@ function runTSC (path, cb) {
 
   shell.stdout.pipe(process.stdout);
 
-  shell.stdin.write('tsc --skipLibCheck --noResolve --jsx react --module amd --target es5 ' + path + '\n');
+  shell.stdin.write('\n tsc --skipLibCheck --noResolve --jsx react --module amd --target es5 ' + path + '\n');
   process.nextTick(function () {
     shell.stdin.end();
   });

@@ -1,3 +1,10 @@
+
+//
+ write TSC compiler server:
+https://github.com/Microsoft/TypeScript/wiki/Using-the-Compiler-API
+//
+
+
 http://roylee0704.github.io/react-flexbox-grid/
 http://redux.js.org/docs/recipes/ReducingBoilerplate.html
 

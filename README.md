@@ -1,9 +1,16 @@
 
+# HR4Rv2
 
+# About
 
 This is a Node.js / React / Redux / TypeScript project
 
 It even uses some basic serverside rendering with React.
+
+The new Hot-Reloading example project for (React + RequireJS + TypeScript) => all React components can be hot-reloaded. 
+Front-end TypeScript modules are converted to AMD which facilitates hot-reloading.
+
+# Running it
 
 When you run the server and load localhost:3000, it should take you to
 
