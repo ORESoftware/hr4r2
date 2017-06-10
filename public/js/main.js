@@ -39,7 +39,7 @@ requirejs.config({
         }
     }
 });
-var deps = [
+require([
     'react-dom',
     'react',
     'socket.io',
@@ -49,8 +49,7 @@ var deps = [
     'redux-thunk',
     'firebase',
     'rxjs'
-];
-require(deps, function () {
+], function () {
     require(['js/application'], function (Application) {
         Application.start();
     });

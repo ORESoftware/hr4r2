@@ -8,6 +8,7 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
 };
 define(["require", "exports", "react"], function (require, exports, React) {
     "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
     var ReactDOM = require('react-dom');
     var async = require('async');
     function changeRoute(fns) {

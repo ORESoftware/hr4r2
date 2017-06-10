@@ -10,6 +10,8 @@ export class ErrorView extends React.Component <any, any> {
         this.error = props.error;
     }
 
+    //////////////
+
     render() {
         return (
             <div>
