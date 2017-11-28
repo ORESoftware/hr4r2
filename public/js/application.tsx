@@ -15,7 +15,8 @@ function start() {
 
     console.log(' => app started, config => ', config);
 
-    if (config.env === 'dev') {
+    if (config.env === 'development') {
+        console.log('env is development, now attempting to connecto dev server...');
         hotReloader.getConnection()
             .once('connect', function () {
                 console.log(' => We have connected to dev-server, now initting router...');

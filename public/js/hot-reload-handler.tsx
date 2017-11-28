@@ -3,60 +3,10 @@
 const io = require('socket.io');
 import hotReloader = require('@hot-reloader');
 
+////////
 
 function replaceAll(str, target, replacement) {
     return str.split(target).join(replacement);
-}
-
-function reconcilePath($filepath, fold1, fold2) {
-
-    var filepath = replaceAll($filepath, '\\', '/');
-
-    var folderz = String(filepath).split('/');
-    var folds = [];
-
-    var add = false;
-    var prev = null;
-    folderz.forEach(function (folder, index) {
-        if (add === true) {
-            folds.push(folder);
-        }
-        if (prev === fold1 && (folder === fold2 || !fold2)) {
-            add = true;
-        }
-        prev = folder;
-    });
-
-    return folds.join('/');
-}
-
-function reconcilePath1($filepath, fold1) {
-
-    var filepath = replaceAll($filepath, '\\', '/');
-
-    var folderz = String(filepath).split('/');
-    var folds = [];
-
-    var add = false;
-    folderz.forEach(function (folder, index) {
-        if (add === true) {
-            folds.push(folder);
-        }
-        if (folder === fold1) {
-            add = true;
-        }
-    });
-
-    return folds.join('/');
-}
-
-
-function capitalizeFirstLetter(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
-}
-
-function deCapitalizeFirstLetter(string) {
-    return string.charAt(0).toLowerCase() + string.slice(1);
 }
 
 
@@ -92,15 +42,15 @@ function getConnection() {
 
         const startProgressBar = function startProgressBar() {
             // $("#hot-reload-progress-bar").show();
-        }
+        };
 
         const stopProgressBar = function stopProgressBar() {
             // $("#hot-reload-progress-bar").hide();
-        }
+        };
 
         const updateProgressBar = function updateProgressBar(value) {
             // $("#hot-reload-progress-bar").prop('value', value);
-        }
+        };
 
         socket.on('start-progress-bar', function (data) {
             startProgressBar();

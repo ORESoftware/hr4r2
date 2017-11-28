@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
 var index_1 = require("../isomorphic/react-components/index");
 var express = require("express");

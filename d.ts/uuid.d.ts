@@ -25,5 +25,5 @@ declare namespace uuid {
 	}
 }
 
-declare const uuid: uuid.UuidStatic
-export = uuid
+declare const uuid: uuid.UuidStatic;
+export = uuid;

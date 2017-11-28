@@ -1,4 +1,5 @@
 'use strict';
+Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
 var ReactDOMServer = require('react-dom/server');
 var error_1 = require("./isomorphic/react-components/error");

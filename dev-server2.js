@@ -1,21 +1,30 @@
 #!/usr/bin/env node
 'use strict';
 
+const tscServer = require('speedy-tsc');
 const strict = process.argv.indexOf('--strict') > 0;
 const chokidar = require('chokidar');
 const path = require('path');
 const fs = require('fs');
-const cp = require('child_process');
-
 const Server = require('socket.io');
 const io = new Server(3980, {});
+const cp = require('child_process');
+
+const k = cp.spawn('tsc', ['-w']);
+
+k.stdout.pipe(process.stdout);
+k.stderr.pipe(process.stderr);
+
+k.once('error', function (err) {
+  console.log('error => ', err.stack || err);
+});
 
 const publicPath = path.resolve(__dirname + '/public');
 const publicPathLen = publicPath.length;
 
 const clients = [];
 
-function getCount () {
+function getCount() {
   return ' => connection count:' + clients.length
 }
 
@@ -44,42 +53,8 @@ const watcher = chokidar.watch(__dirname + '/**/*.tsx', {
   ignoreInitial: true
 });
 
-function runTSC (path, cb) {
-
-  const shell = cp.spawn('bash');
-
-  let stderr = '';
-  let stdout = '';
-
-  shell.once('close', function (code) {
-
-    shell.removeAllListeners();
-    shell.unref();
-    if (code < 1 || !strict) {
-      cb(null)
-    }
-    else {
-      console.error(' => stderr from tsc child process => \n' + stderr);
-    }
-  });
-
-  console.log('path => ', String(path).trim());
-
-  shell.stderr.setEncoding('utf8');
-  shell.stdout.setEncoding('utf8');
-
-  shell.stderr.on('data', function (d) {
-    stderr += d;
-  });
-
-  shell.stdout.pipe(process.stdout);
-
-  shell.stdin.write('\n tsc --skipLibCheck --noResolve --jsx react --module amd --target es5 ' + path + '\n');
-  process.nextTick(function () {
-    shell.stdin.end();
-  });
-
-}
+const tsconfig = require('./tsconfig-fe.json');
+const compileFiles = tscServer(tsconfig.compilerOptions);
 
 watcher.once('ready', function () {
 
@@ -98,9 +73,13 @@ watcher.once('ready', function () {
 
   watcher.on('change', path => {
 
-    runTSC(path, function () {
+    if (String(path).startsWith(publicPath)) {
 
-      if (String(path).startsWith(publicPath)) {
+      compileFiles([path], function (err) {
+
+        if(err){
+          console.error(err.stack || err);
+        }
 
         path = String(path).slice(publicPathLen + 1, path.length - 4);
         const sockets = clients;
@@ -113,10 +92,8 @@ watcher.once('ready', function () {
             path: path
           });
         });
-
-      }
-
-    });
+      });
+    }
 
   });
 

@@ -39,6 +39,6 @@
     "rimraf": "^2.5.4",
     "roodles": "0.0.1013",
     "socket.io": "^1.7.2",
-    "suman": "github:sumanjs/suman#dev"
+    "suman": "latest"
   }
 }
